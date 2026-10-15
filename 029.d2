@@ -1,0 +1,28 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+c1: "x = 2" {class: proc}
+d1: "x <= 100 ?" {class: dec}
+o1: "Imprimir x" {class: io}
+c2: "x = x + 2" {class: proc}
+fin: "Fin" {class: start-end}
+
+ini -> c1 -> d1
+d1 -> o1: "Sí"
+o1 -> c2 -> d1
+d1 -> fin: "No"

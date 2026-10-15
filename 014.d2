@@ -1,0 +1,29 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer numero" {class: io}
+d1: "numero <= 9 ?" {class: dec}
+o1: "Imprimir \"un sólo dígito\"" {class: io}
+o2: "Imprimir \"dos dígitos\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> d1
+d1 -> o1: "Sí"
+d1 -> o2: "No"
+o1 -> fin
+o2 -> fin

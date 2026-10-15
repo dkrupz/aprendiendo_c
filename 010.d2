@@ -1,0 +1,27 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer sueldo" {class: io}
+d1: "sueldo > 3000 ?" {class: dec}
+o1: "Imprimir \"tienes que pagar impuestos\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> d1
+d1 -> o1: "Sí"
+o1 -> fin
+d1 -> fin: "No"

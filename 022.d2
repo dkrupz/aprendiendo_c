@@ -1,0 +1,31 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer dd" {class: io}
+l2: "Leer mm" {class: io}
+l3: "Leer aa" {class: io}
+d1: "dd==25 && mm==12 ?" {class: dec}
+o1: "Imprimir \"es Navidad\"" {class: io}
+o2: "Imprimir \"NO es Navidad\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> l3 -> d1
+d1 -> o1: "Sí"
+d1 -> o2: "No"
+o1 -> fin
+o2 -> fin

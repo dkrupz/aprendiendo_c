@@ -1,0 +1,32 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer nota1" {class: io}
+l2: "Leer nota2" {class: io}
+l3: "Leer nota3" {class: io}
+c1: "notaMedia = (nota1+nota2+nota3) / 3" {class: proc}
+d1: "notaMedia >= 7 ?" {class: dec}
+o1: "Imprimir \"Promocionado\"" {class: io}
+o2: "Imprimir \"Burro\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> l3 -> c1 -> d1
+d1 -> o1: "Sí"
+d1 -> o2: "No"
+o1 -> fin
+o2 -> fin

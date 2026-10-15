@@ -1,0 +1,43 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer salario" {class: io}
+l2: "Leer antiguedad" {class: io}
+d1: "salario<500 && antiguedad>=10 ?" {class: dec}
+d2: "salario<500 ?" {class: dec}
+
+c1: "aumento = salario*0.20" {class: proc}
+c2: "salarioPag = salario+aumento" {class: proc}
+o1: "Imprimir salarioPag" {class: io}
+
+c3: "aumento = salario*0.05" {class: proc}
+c4: "salarioPag = salario+aumento" {class: proc}
+o2: "Imprimir salarioPag" {class: io}
+
+o3: "Imprimir salario" {class: io}
+
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> d1
+d1 -> c1: "Sí"
+c1 -> c2 -> o1 -> fin
+d1 -> d2: "No"
+d2 -> c3: "Sí"
+c3 -> c4 -> o2 -> fin
+d2 -> o3: "No"
+o3 -> fin

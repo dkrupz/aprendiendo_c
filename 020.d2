@@ -1,0 +1,36 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer num1" {class: io}
+l2: "Leer num2" {class: io}
+l3: "Leer num3" {class: io}
+d1: "num1 > num2 && num1 > num3 ?" {class: dec}
+d2: "num2 > num3 ?" {class: dec}
+o1: "Imprimir num1" {class: io}
+o2: "Imprimir num2" {class: io}
+o3: "Imprimir num3" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> l3 -> d1
+d1 -> o1: "Sí"
+d1 -> d2: "No"
+d2 -> o2: "Sí"
+d2 -> o3: "No"
+o1 -> fin
+o2 -> fin
+o3 -> fin

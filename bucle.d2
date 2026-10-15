@@ -1,0 +1,11 @@
+direction: down
+
+evaluacion: "¿es x <= n?" {
+  shape: diamond
+}
+
+hacer_algo: "Entrar al bucle"
+salir_bucle: "Fin del proceso"
+
+evaluacion -> hacer_algo: "sí"
+evaluacion -> salir_bucle: "no"

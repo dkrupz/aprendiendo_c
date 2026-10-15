@@ -1,0 +1,30 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer primero" {class: io}
+l2: "Leer segundo" {class: io}
+l3: "Leer tercero" {class: io}
+d1: "primero==segundo && segundo==tercero ?" {class: dec}
+c1: "operacion = primero + segundo * tercero" {class: proc}
+o1: "Imprimir resultado" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> l3 -> d1
+d1 -> c1: "Sí"
+c1 -> o1 -> fin
+d1 -> fin: "No"

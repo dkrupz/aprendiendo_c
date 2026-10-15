@@ -1,0 +1,56 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer num1" {class: io}
+l2: "Leer num2" {class: io}
+l3: "Leer num3" {class: io}
+
+d1: "num1<num2 && num1<num3 ?" {class: dec}
+d2: "num2<num3 ?" {class: dec}
+oMin1: "Imprimir num1 (mínimo)" {class: io}
+oMin2: "Imprimir num2 (mínimo)" {class: io}
+oMin3: "Imprimir num3 (mínimo)" {class: io}
+sep: "Imprimir \" - \"" {class: io}
+
+d3: "num1>num2 && num1>num3 ?" {class: dec}
+d4: "num2>num3 ?" {class: dec}
+oMax1: "Imprimir num1 (máximo)" {class: io}
+oMax2: "Imprimir num2 (máximo)" {class: io}
+oMax3: "Imprimir num3 (máximo)" {class: io}
+
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> l3 -> d1
+d1 -> oMin1: "Sí"
+d1 -> d2: "No"
+d2 -> oMin2: "Sí"
+d2 -> oMin3: "No"
+
+oMin1 -> sep
+oMin2 -> sep
+oMin3 -> sep
+
+sep -> d3
+d3 -> oMax1: "Sí"
+d3 -> d4: "No"
+d4 -> oMax2: "Sí"
+d4 -> oMax3: "No"
+
+oMax1 -> fin
+oMax2 -> fin
+oMax3 -> fin

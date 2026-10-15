@@ -1,0 +1,50 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer x" {class: io}
+l2: "Leer y" {class: io}
+d1: "x==0 && y==0 ?" {class: dec}
+d2: "x>0 && y>0 ?" {class: dec}
+d3: "x<0 && y>0 ?" {class: dec}
+d4: "x<0 && y<0 ?" {class: dec}
+d5: "x>0 && y<0 ?" {class: dec}
+o1: "Imprimir \"En el origen\"" {class: io}
+o2: "Imprimir \"Primer cuadrante\"" {class: io}
+o3: "Imprimir \"Segundo cuadrante\"" {class: io}
+o4: "Imprimir \"Tercer cuadrante\"" {class: io}
+o5: "Imprimir \"Cuarto cuadrante\"" {class: io}
+o6: "Imprimir \"Sobre un eje\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> d1
+d1 -> o1: "Sí"
+d1 -> d2: "No"
+d2 -> o2: "Sí"
+d2 -> d3: "No"
+d3 -> o3: "Sí"
+d3 -> d4: "No"
+d4 -> o4: "Sí"
+d4 -> d5: "No"
+d5 -> o5: "Sí"
+d5 -> o6: "No"
+o1 -> fin
+o2 -> fin
+o3 -> fin
+o4 -> fin
+o5 -> fin
+o6 -> fin

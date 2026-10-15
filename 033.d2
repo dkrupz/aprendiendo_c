@@ -1,0 +1,39 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+c1: "altas = 0, bajas = 0, x = 1" {class: proc}
+d1: "x <= 10 ?" {class: dec}
+l1: "Leer nota" {class: io}
+d2: "nota >= 7 ?" {class: dec}
+c2: "altas = altas + 1" {class: proc}
+c3: "bajas = bajas + 1" {class: proc}
+c4: "x = x + 1" {class: proc}
+o1: "Imprimir altas" {class: io}
+o2: "Imprimir bajas" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> c1 -> d1
+d1 -> l1: "Sí"
+l1 -> d2
+d2 -> c2: "Sí"
+d2 -> c3: "No"
+c2 -> c4
+c3 -> c4
+c4 -> d1
+d1 -> o1: "No"
+o1 -> o2 -> fin

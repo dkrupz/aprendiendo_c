@@ -1,0 +1,41 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer totalPreguntas" {class: io}
+l2: "Leer totalCorrectas" {class: io}
+c1: "porcentaje = totalCorrectas*100 / totalPreguntas" {class: proc}
+d1: "porcentaje >= 90 ?" {class: dec}
+d2: "porcentaje >= 75 ?" {class: dec}
+d3: "porcentaje >= 50 ?" {class: dec}
+o1: "Imprimir \"nivel máximo\"" {class: io}
+o2: "Imprimir \"nivel medio\"" {class: io}
+o3: "Imprimir \"nivel regular\"" {class: io}
+o4: "Imprimir \"mal nivel\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> l2 -> c1 -> d1
+d1 -> o1: "Sí"
+d1 -> d2: "No"
+d2 -> o2: "Sí"
+d2 -> d3: "No"
+d3 -> o3: "Sí"
+d3 -> o4: "No"
+o1 -> fin
+o2 -> fin
+o3 -> fin
+o4 -> fin

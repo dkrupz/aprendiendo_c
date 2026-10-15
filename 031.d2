@@ -1,0 +1,33 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+c1: "x = 1, suma = 1" {class: proc}
+d1: "x <= 10 ?" {class: dec}
+l1: "Leer valor" {class: io}
+c2: "suma = suma + valor" {class: proc}
+c3: "x = x + 1" {class: proc}
+c4: "promedio = suma / 10" {class: proc}
+o1: "Imprimir suma" {class: io}
+o2: "Imprimir promedio" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> c1 -> d1
+d1 -> l1: "Sí"
+l1 -> c2 -> c3 -> d1
+d1 -> c4: "No"
+c4 -> o1 -> o2 -> fin

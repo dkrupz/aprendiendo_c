@@ -1,0 +1,39 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer num" {class: io}
+d1: "num < 10 ?" {class: dec}
+d2: "num < 100 ?" {class: dec}
+d3: "num < 1000 ?" {class: dec}
+o1: "Imprimir \"Tiene un dígito\"" {class: io}
+o2: "Imprimir \"Tiene dos dígitos\"" {class: io}
+o3: "Imprimir \"Tiene 3 dígitos\"" {class: io}
+o4: "Imprimir \"Error en la entrada de datos\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> d1
+d1 -> o1: "Sí"
+d1 -> d2: "No"
+d2 -> o2: "Sí"
+d2 -> d3: "No"
+d3 -> o3: "Sí"
+d3 -> o4: "No"
+o1 -> fin
+o2 -> fin
+o3 -> fin
+o4 -> fin

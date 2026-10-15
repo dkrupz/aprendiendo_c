@@ -1,0 +1,34 @@
+direction: down
+
+classes: {
+  start-end: {
+    shape: oval
+  }
+  io: {
+    shape: parallelogram
+  }
+  proc: {
+    shape: rectangle
+  }
+  dec: {
+    shape: diamond
+  }
+}
+
+ini: "Inicio" {class: start-end}
+l1: "Leer numero" {class: io}
+d1: "numero < 0 ?" {class: dec}
+d2: "numero == 0 ?" {class: dec}
+o1: "Imprimir \"negativo\"" {class: io}
+o2: "Imprimir \"nulo\"" {class: io}
+o3: "Imprimir \"positivo\"" {class: io}
+fin: "Fin" {class: start-end}
+
+ini -> l1 -> d1
+d1 -> o1: "Sí"
+d1 -> d2: "No"
+d2 -> o2: "Sí"
+d2 -> o3: "No"
+o1 -> fin
+o2 -> fin
+o3 -> fin
